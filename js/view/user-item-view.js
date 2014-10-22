@@ -21,6 +21,10 @@ var UserItemView = function (props) {
 
     // TODO: create JSX compiler
     this._render = function () {
-        return this.refs.item = RV.Node('a', {href: '#', class: 'list-group-item'}, this.formatContent(props.model));
+        return eval(RV.DOM2RV.parseString(
+            '<a class="list-group-item" href="#" ref="item">' +
+                '{this.formatContent(props.model)}' +
+            '</a>'
+        ));
     };
 };

@@ -22,15 +22,17 @@ RV.Model = function () {
     };
 
     this.set = function (name, value) {
-        if (this.fields.hasOwnProperty(name) && this.fields[name] !== name) {
-            this.fields[name] = value;
-            if (this._doNotNotify) {
-                this._changed = true;
-                this._changeList[name] = value;
-            } else {
-                this._changeList[name] = value;
-                this.em.trigger('change', {change: this._changeList});
-                this._changeList = {};
+        if (this.fields.hasOwnProperty(name)) {
+            if ( this.fields[name] !== value ){
+                this.fields[name] = value;
+                if (this._doNotNotify) {
+                    this._changed = true;
+                    this._changeList[name] = value;
+                } else {
+                    this._changeList[name] = value;
+                    this.em.trigger('change', {change: this._changeList});
+                    this._changeList = {};
+                }
             }
         } else {
             throw new Error('No such field');

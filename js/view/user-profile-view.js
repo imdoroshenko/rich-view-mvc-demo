@@ -1,6 +1,12 @@
 var UserProfileView = function (props) {
     RV.extend(this, RV.View);
 
+    var CustomComponent = function(params) {
+        var h3 = document.createElement('h3');
+        h3.textContent = 'Hello ' + params.title;
+        return h3;
+
+    };
     var model = props
         ? props.model
         : null;
@@ -33,35 +39,32 @@ var UserProfileView = function (props) {
         })
     }.bind(this);
 
-
-
-
     // TODO: create JSX compiler
+
     this._render = function () {
-        return this.refs.item = RV.Node('div', {
-                class: 'panel panel-primary',
-                style: 'width:600px;float:left; margin-left:50px;'
-            },
-            RV.Node('div', {class: 'panel-heading'}, 'Edit Profile'),
-            RV.Node('div', {class: 'panel-body'},
-                RV.Node('div', {style: 'float:left;'},
-                    RV.Node('div', {class: 'input-group'},
-                        RV.Node('label', {for: 'fname', class: 'input-group-addon', style: 'width:100px'}, 'First Name:'),
-                        this.refs.fname = RV.Node('input', {type: 'text', class: 'form-control', name: 'fname', id: 'fname', value: ''})
-                    ),
-                    RV.Node('div', {class: 'input-group'},
-                        RV.Node('label', {for: 'lname', class: 'input-group-addon', style: 'width:100px'}, 'Last Name:'),
-                        this.refs.lname = RV.Node('input', {type: 'text', class: 'form-control', name: 'lname', id: 'lname', value: ''})
-                    ),
-                    RV.Node('div', {class: 'input-group'},
-                        RV.Node('label', {for: 'position', class: 'input-group-addon', style: 'width:100px'}, 'Position:'),
-                        this.refs.position = RV.Node('input', {type: 'text', class: 'form-control', name: 'position', id: 'position', value: ''})
-                    )
-                ),
-                RV.Node('div', {style: 'float:right;'},
-                    this.refs.img = new ImageView({width: '200px', height: '200px'})
-                )
-            )
-        );
+        return eval(RV.DOM2RV.parseString(
+        '<div ref="item" class="panel panel-primary" style="width: 600px; float: left; margin-left: 50px;">' +
+        '   <div class="panel-heading">Edit Profile</div>' +
+        '   <CustomComponent title="YOLO!" />' +
+        '   <div class="panel-body">' +
+        '       <div style="float: left;">' +
+        '           <div class="input-group">' +
+        '               <label for="fname" class="input-group-addon" style="width: 100px;">First Name:</label>' +
+        '               <input ref="fname" type="text" class="form-control" name="fname" id="fname" value=""/>' +
+        '           </div>' +
+        '           <div class="input-group">' +
+        '               <label for="lname" class="input-group-addon" style="width: 100px;">Last Name:</label>' +
+        '               <input ref="lname" type="text" class="form-control" name="lname" id="lname" value=""/>' +
+        '           </div>' +
+        '           <div class="input-group">' +
+        '               <label for="position" class="input-group-addon" style="width: 100px;">Position:</label>' +
+        '               <input ref="position" type="text" class="form-control" name="position" id="position" value=""/>' +
+        '           </div>' +
+        '       </div>' +
+        '       <div style="float: right;">' +
+        '           <ImageView ref="img" width="200px" height="200px"/>' +
+        '        </div>' +
+        '   </div>' +
+        '</div>'));
     };
 };

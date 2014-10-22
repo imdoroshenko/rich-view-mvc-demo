@@ -3,7 +3,8 @@ var UsersController = function () {
 
     this.routerEM.on('users-page', function (e) {
         RV.setContent(new ListView({
-            collection: new UsersCollection().get(),
+            collection:(window.collection = new UsersCollection()),
+            users: window.collection.get(),
             ItemView: UserItemView,
             className: 'users-list'
         }));
@@ -12,7 +13,7 @@ var UsersController = function () {
     this.viewEM.on('user-item-selected', function (e) {
         var userModel = e.params.model;
         new UserProfileService().showProfile(userModel);
-    }.bind(this))
+    }.bind(this));
 
     this.viewEM.on('user-profile-input', function (e) {
         var model = e.params.model,
