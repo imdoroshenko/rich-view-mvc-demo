@@ -1,0 +1,11 @@
+{
+    "author": "Ivan Doroshenko <i.m.doroshenko@gmail.com>",
+    "name": "RV-MVC",
+    "version": "0.0.1",
+    "dependencies": {
+        "gulp": "~3.8.1",
+        "gulp-util": "^3.0.1",
+        "gulp-concat" : "^2.4.1",
+        "jsx2dom" : "git://github.com/imdoroshenko/jsx2rv.git#master"
+    }
+}

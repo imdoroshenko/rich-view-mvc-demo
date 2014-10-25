@@ -1,5 +1,4 @@
 var ImageView = function (props) {
-    console.log(props);
     RV.extend(this, RV.View);
     props = props||{};
     var src = props.src||'',
@@ -23,11 +22,11 @@ var ImageView = function (props) {
             this.refs.img.src = src;
         }
     };
-    // TODO: create JSX compiler
     this._render = function () {
-        return eval(RV.DOM2RV.parseString(
-        '<div style="overflow:hidden;background-image: url(\'images/default.gif\'); padding:2px; border:1px solid black;background-repeat: no-repeat;background-position: center;">' +
-            '<img width="{width}" height="{height}" ref="img"/>' +
-        '</div>'));
+        return <RV>
+            <div style="overflow:hidden;background-image: url('images/default.gif'); padding:2px; border:1px solid black;background-repeat: no-repeat;background-position: center;">
+                <img width="{width}" height="{height}" ref="img"/>
+            </div>
+        </RV>;
     };
 };

@@ -3,7 +3,7 @@ var UserProfileView = function (props) {
 
     var CustomComponent = function(params) {
         var h3 = document.createElement('h3');
-        h3.textContent = 'Hello ' + params.title;
+        h3.textContent = 'Hello, ' + params.title;
         return h3;
 
     };
@@ -39,32 +39,34 @@ var UserProfileView = function (props) {
         })
     }.bind(this);
 
-    // TODO: create JSX compiler
-
     this._render = function () {
-        return eval(RV.DOM2RV.parseString(
-        '<div ref="item" class="panel panel-primary" style="width: 600px; float: left; margin-left: 50px;">' +
-        '   <div class="panel-heading">Edit Profile</div>' +
-        '   <CustomComponent title="YOLO!" />' +
-        '   <div class="panel-body">' +
-        '       <div style="float: left;">' +
-        '           <div class="input-group">' +
-        '               <label for="fname" class="input-group-addon" style="width: 100px;">First Name:</label>' +
-        '               <input ref="fname" type="text" class="form-control" name="fname" id="fname" value=""/>' +
-        '           </div>' +
-        '           <div class="input-group">' +
-        '               <label for="lname" class="input-group-addon" style="width: 100px;">Last Name:</label>' +
-        '               <input ref="lname" type="text" class="form-control" name="lname" id="lname" value=""/>' +
-        '           </div>' +
-        '           <div class="input-group">' +
-        '               <label for="position" class="input-group-addon" style="width: 100px;">Position:</label>' +
-        '               <input ref="position" type="text" class="form-control" name="position" id="position" value=""/>' +
-        '           </div>' +
-        '       </div>' +
-        '       <div style="float: right;">' +
-        '           <ImageView ref="img" width="200px" height="200px"/>' +
-        '        </div>' +
-        '   </div>' +
-        '</div>'));
+
+        var heading = <RV><div class="panel-heading">Edit Profile</div></RV>;
+
+        return <RV>
+            <div ref="item" class="panel panel-primary" style="width: 600px; float: left; margin-left: 50px;">
+                {heading}
+                <CustomComponent title="this is text from test custom component!" />
+                <div class="panel-body">
+                    <div style="float: left;">
+                        <div class="input-group">
+                            <label for="fname" class="input-group-addon" style="width: 100px;">First Name:</label>
+                            <input ref="fname" type="text" class="form-control" name="fname" id="fname" value=""/>
+                        </div>
+                        <div class="input-group">
+                           <label for="lname" class="input-group-addon" style="width: 100px;">Last Name:</label>
+                           <input ref="lname" type="text" class="form-control" name="lname" id="lname" value=""/>
+                       </div>
+                       <div class="input-group">
+                           <label for="position" class="input-group-addon" style="width: 100px;">Position:</label>
+                           <input ref="position" type="text" class="form-control" name="position" id="position" value=""/>
+                       </div>
+                   </div>
+                   <div style="float: right;">
+                       <ImageView ref="img" width="200px" height="200px"/>
+                    </div>
+               </div>
+            </div>
+        </RV>;
     };
 };

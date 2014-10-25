@@ -19,12 +19,11 @@ var UserItemView = function (props) {
             + ' (' + model.get('position')  + ')'
     };
 
-    // TODO: create JSX compiler
     this._render = function () {
-        return eval(RV.DOM2RV.parseString(
-            '<a class="list-group-item" href="#" ref="item">' +
-                '{this.formatContent(props.model)}' +
-            '</a>'
-        ));
+        return <RV>
+            <a class="list-group-item" href="#" ref="item">
+                {this.formatContent(props.model)}
+            </a>
+        </RV>;
     };
 };

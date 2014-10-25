@@ -14,19 +14,17 @@ var ListView = function (props) {
         currentDom.parentNode.replaceChild(this.render(), currentDom);
     };
 
-    // TODO: create JSX compiler
-
     this._render = function () {
         var items = props.users.length
             ? props.users.map(function (model) {
                return new props.ItemView({model: model});
               })
-            : eval(RV.DOM2RV.parseString('<div style="font-size:16px">No items</div>'));
+            : <RV><div style="font-size:16px">No items</div></RV>;
 
-        return eval(RV.DOM2RV.parseString(
-            '<div class="list-group" style="width:400px; float:left;" ref="container">' +
-               '{items}' +
-            '</div>'
-        ));
+        return <RV>
+            <div class="list-group" style="width:400px; float:left;" ref="container">
+               {items}
+            </div>
+        </RV>;
     };
 };
