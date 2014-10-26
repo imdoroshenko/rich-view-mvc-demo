@@ -17,3 +17,7 @@ rich-view-mvc-demo $ npm install
 ```sh
 rich-view-mvc-demo $ gulp watch
 ```
+####4. Open index.html 
+```sh
+rich-view-mvc-demo $ open index.html
+```
