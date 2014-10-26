@@ -2,11 +2,10 @@ var UserProfileView = function (props) {
     RV.extend(this, RV.View);
 
     var CustomComponent = function(params) {
-        var h3 = document.createElement('h3');
-        h3.textContent = 'Hello, ' + params.title;
+        var h3 = <RV><h3>{'Hello, ' + params.title}</h3></RV>;
         return h3;
-
     };
+
     var model = props
         ? props.model
         : null;
