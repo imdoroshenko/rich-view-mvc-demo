@@ -14,4 +14,9 @@ gulp.task('jsx2rv', function(cb) {
     cb();
 });
 
+gulp.task('watch', ['jsx2rv'], function(cb) {
+    gulp.watch(srcViewPath + '/**/*.js', ['jsx2rv']);
+    cb();
+});
+
 gulp.task('default', ['jsx2rv']);
