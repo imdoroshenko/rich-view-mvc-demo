@@ -1,5 +1,5 @@
-var UserItemView = function (props) {
-    RV.extend(this, RV.View);
+rg.registerClass('UserItemView', function UserItemView (props, $RV_View) {
+    RV.extend(this, $RV_View);
 
     this.modelEM.onTarget(props.model, 'change', function () {
         if (this._rendered) {
@@ -26,4 +26,4 @@ var UserItemView = function (props) {
             </a>
         </RV>;
     };
-};
+});

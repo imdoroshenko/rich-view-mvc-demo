@@ -1,5 +1,5 @@
-RV.Model = function () {
-    this.em = RV.modelNS.getEventManager(this);
+RV.Model = function ($RV_modelNS) {
+    this.em = $RV_modelNS.getEventManager(this);
 
     this.fields = {};
     this._doNotNotify = false;

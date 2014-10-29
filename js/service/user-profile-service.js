@@ -1,8 +1,8 @@
-var UserProfileService = (function () {
+rg.registerClass('UserProfileService', (function () {
     var profileView = null;
-    return function UserProfileService () {
+    return function UserProfileService ($UserProfileView) {
         if (!profileView) {
-            profileView = new UserProfileView();
+            profileView = new $UserProfileView();
             profileView.render();
         }
         this.view = profileView;
@@ -12,4 +12,4 @@ var UserProfileService = (function () {
             RV.container.appendChild(this.view.getDOM());
         };
     };
-})();
+})());

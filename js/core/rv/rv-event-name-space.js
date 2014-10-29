@@ -163,7 +163,3 @@ RV.EventNameSpace = function(name) {
         return new EventManager().setTarget(target);
     };
 };
-
-RV.routerNS = new RV.EventNameSpace('Router');
-RV.viewNS = new RV.EventNameSpace('View');
-RV.modelNS = new RV.EventNameSpace('Model');

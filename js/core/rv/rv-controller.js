@@ -1,9 +1,5 @@
-RV.Controller = (function () {
-    var viewEventManager = RV.viewNS.getEventManager(window);
-    var routerEventManager = RV.routerNS.getEventManager(window);
-
-    return function Controller() {
-        this.viewEM = viewEventManager;
-        this.routerEM = routerEventManager;
-    };
-})();
+RV.Controller = function Controller($RV_viewEM, $RV_routerEM) {
+    console.log($RV_viewEM, $RV_routerEM);
+    this.viewEM = $RV_viewEM;
+    this.routerEM = $RV_routerEM;
+};
