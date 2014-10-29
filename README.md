@@ -13,11 +13,15 @@ $ git clone git@github.com:imdoroshenko/rich-view-mvc-demo.git
 ```sh
 rich-view-mvc-demo $ npm install
 ```
-####3. Use `gulp` or `gulp watch` command to compile project
+####3. Install bower dependencies
+```sh
+rich-view-mvc-demo $ bower install
+```
+####4. Use `gulp` or `gulp watch` command to compile project
 ```sh
 rich-view-mvc-demo $ gulp watch
 ```
-####4. Open index.html 
+####5. Open index.html 
 ```sh
 rich-view-mvc-demo $ open index.html
 ```
