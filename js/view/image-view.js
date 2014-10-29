@@ -1,5 +1,5 @@
-var ImageView = function (props) {
-    RV.extend(this, RV.View);
+rg.registerClass('ImageView', function ImageView(props, $RV_View) {
+    RV.extend(this, $RV_View);
     props = props||{};
     var src = props.src||'',
         width = props.width||'100px',
@@ -29,4 +29,4 @@ var ImageView = function (props) {
             </div>
         </RV>;
     };
-};
+});

@@ -1,8 +1,5 @@
-var ListView = function (props) {
-    var el = document.createElement('div');
-
-    RV.extend(this, RV.View);
-
+rg.registerClass('ListView', function ListView(props, $RV_View) {
+    RV.extend(this, $RV_View);
     props.collection.em.on('change', function () {
         this.updateUsers();
 
@@ -27,4 +24,4 @@ var ListView = function (props) {
             </div>
         </RV>;
     };
-};
+});

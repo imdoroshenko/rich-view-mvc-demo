@@ -1,0 +1,10 @@
+{
+    "name": "RV-MVC",
+    "version": "0.0.1",
+    "main": [
+        "./index.html"
+    ],
+    "dependencies": {
+        "registerjs": "git@github.com:imdoroshenko/registerjs.git#master"
+    }
+}

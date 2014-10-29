@@ -1,5 +1,5 @@
-var UserProfileView = function (props) {
-    RV.extend(this, RV.View);
+rg.registerClass('UserProfileView', function UserProfileView (props, $RV_View, $ImageView) {
+    RV.extend(this, $RV_View);
 
     var CustomComponent = function(params) {
         var h3 = <RV><h3>{'Hello, ' + params.title}</h3></RV>;
@@ -40,7 +40,8 @@ var UserProfileView = function (props) {
 
     this._render = function () {
 
-        var heading = <RV><div class="panel-heading">Edit Profile</div></RV>;
+        var heading = <RV><div class="panel-heading">Edit Profile</div></RV>,
+            ImageView = $ImageView;
 
         return <RV>
             <div ref="item" class="panel panel-primary" style="width: 600px; float: left; margin-left: 50px;">
@@ -68,4 +69,4 @@ var UserProfileView = function (props) {
             </div>
         </RV>;
     };
-};
+});
