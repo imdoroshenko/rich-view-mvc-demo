@@ -63,6 +63,11 @@ RV.EventNameSpace = function(name) {
         }
         return this;
     };
+    var getListersCountForEvent = function (eventName) {
+        return ns.eventCollections[eventName]
+            ? ns.eventCollections[eventName].length
+            : 0;
+    };
     var triggerEvent = function(eventName, params){
         this.valid = true;
         if(ns.eventCollections[eventName]){
@@ -148,6 +153,7 @@ RV.EventNameSpace = function(name) {
             this.valid = o;
             return this;
         },
+        count: getListersCountForEvent,
         extend : function(em){
             em.addChild(this);
             return this;

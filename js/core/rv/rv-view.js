@@ -13,7 +13,9 @@ RV.View = function View($RV_modelEM, $RV_viewNS) {
     this._render = function () {
     };
     this.getDOM = function () {
-        return this._DOM;
+        return this._rendered
+            ? this._DOM
+            : this.render();
     };
     this.render = function () {
         this.onRenderBefore();
