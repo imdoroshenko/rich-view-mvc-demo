@@ -1,8 +1,21 @@
 var RV = {
+        controllers: [
+            'UsersController'
+        ],
         main: function () {
             var routerNS = new RV.EventNameSpace('Router'),
                 viewNS = new RV.EventNameSpace('View'),
-                modelNS = new RV.EventNameSpace('Model');
+                modelNS = new RV.EventNameSpace('Model'),
+                router = null,
+                my = this;
+
+            rg.registerClasses(
+                ['RV_Controller', this.Controller],
+                ['RV_EventNameSpace', this.EventNameSpace],
+                ['RV_Model', this.Model],
+                ['RV_View', this.View],
+                ['RV_Router', this.Router]
+            );
 
             rg.registerInjections(
                 ['RV_routerNS', routerNS],
@@ -11,17 +24,39 @@ var RV = {
                 ['RV_routerEM', routerNS.getEventManager(window)],
                 ['RV_viewEM', viewNS.getEventManager(window)],
                 ['RV_modelEM', modelNS.getEventManager(window)],
-                ['RV_extend', this.extend]
+                ['RV_extend', this.extend],
+                ['RV_router', router = rg.getInstance('RV_Router')]
             );
 
-            rg.registerClasses(
-                ['RV_Controller', this.Controller],
-                ['RV_EventNameSpace', this.EventNameSpace],
-                ['RV_Model', this.Model],
-                ['RV_View', this.View]
-            );
+            for (var i = 0, ln = this.controllers.length; i < ln; i++) {
+                rg.getInstance(this.controllers[i]);
+            }
 
+            router
+                .case('/users/', function (e) {
+                    var routerEM = rg.get('RV_routerEM');
+                    routerEM.trigger('/users/',{
+                        routerCallBack: my._after(routerEM.count('/users/'), e.callback),
+                        match: e.match
+                    });
+                })
+                .case('/users/:id/', function (e) {
+                    var routerEM = rg.get('RV_routerEM');
+                    routerEM.trigger('/users/:id/',{
+                        routerCallBack: my._after(routerEM.count('/users/:id/'), e.callback),
+                        match: e.match
+                    });
+                })
+                .init()
+                .check();
 
+        },
+        _after: function after(n, func) {
+            return function() {
+                if (--n < 1) {
+                    return func.apply(this, arguments);
+                }
+            };
         },
         container: null,
         setContent: function (el) {

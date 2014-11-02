@@ -21,7 +21,7 @@ rg.registerClass('UserItemView', function UserItemView (props, $RV_View) {
 
     this._render = function () {
         return <RV>
-            <a class="list-group-item" href="#" ref="item">
+            <a class="list-group-item" href="{'#/users/' + props.model.get('id') + '/'}" ref="item">
                 {this.formatContent(props.model)}
             </a>
         </RV>;
