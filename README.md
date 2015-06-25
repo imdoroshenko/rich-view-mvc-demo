@@ -3,6 +3,10 @@ rich-view-mvc-demo
 
 Demo of MVC application based on RV framework
 
+RV (Rich View) is my pet project, it is small framework that allows build small and handy view components and have MVC structure. Also, I use it as ground for testing my Dependency Injection library  https://github.com/imdoroshenko/registerjs
+
+Unfortunately, work is still in progress.
+
 #Installation
 
 ####1. Clone project repository
